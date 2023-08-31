@@ -29,11 +29,10 @@ dia_completo = input("Ingrese el dia(dia semana,DD/MM): ")
 
 coma = dia_completo.find(",")
 dia_semana = dia_completo[0:coma]
-dia = int(dia_completo[coma+1:coma+3])
-mes = int(dia_completo[coma+4:])
+dia = int(dia_completo[coma+2:coma+4])
+mes = int(dia_completo[coma+5:])
 
 dia_semana = dia_semana.lower()
-
 
 if (dia <= 31) and (mes <= 12):
     if (dia_semana == "lunes") or (dia_semana == "martes") or (dia_semana == "miércoles"):
