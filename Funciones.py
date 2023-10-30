@@ -554,7 +554,62 @@ def order_mixed_list(item):
     else:
         return (1,item)
 
+#Funciona en conjunto con odd y determinan la paridad de un numero
+def even(number):
+    if number == 0:
+        return True
+    else:
+        return odd(number - 1)
 
+def odd(number):
+    if number == 0:
+        return False
+    else:
+        return even(number - 1)
 
+#Retorna el mayor numero de una lista
+def most_by_list(list_numbers,i=0,most=-sys.maxsize):
+    if i == len(list_numbers):
+        return most
+    else:
+        if list_numbers[i] > most:
+            most = list_numbers[i]
+        return most_by_list(list_numbers, i + 1, most)     
 
+#Replica los numeros de una lista la cantidad de veces que le pidamos
+def replicate_numbers(list_numbers, replicate,i=0):
+    if i == len(list_numbers):
+        return list_numbers
+    else:
+        list_numbers[i] = [list_numbers[i]] * replicate
+        return replicate_numbers(list_numbers,replicate,i+1)
 
+#Realiza una suma recursiva con dos numeros
+def recursive_summation(n,p):
+    if n == 1:
+        return p
+    else: 
+        return n * p + recursive_summation(n-1,p)
+    
+#Recibe una fila y una columna y retorna el valor de la fila y columna de un triangulo pascal    
+def pascal(row,col):
+    if row == 0 or col==row:
+        return 1
+    else:
+        return pascal(row-1,col-1) + pascal(row-1,col)
+        
+#Recibe una lista de caracteres y su longitud e imprime todas las combinaciones posibles        
+def combinations(list_char, length_list,current_string=''):
+    if length_list == 0:
+        print(current_string)
+    else:
+        for character in list_char:
+            combinations(list_char,length_list -1,current_string+character)    
+
+#Recibe un tamaño de papel segun la norma ISO 216 y devuelve sus medidas
+def paper_size(number_paper):
+    if number_paper == 0:
+        return (841, 1189)
+    else:
+        width, height = paper_size(number_paper - 1)
+        return (height // 2, width)
